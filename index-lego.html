@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- GOOGLE ANALYTICS AQUÍ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arma a tu mejor amigo | Nueva colección de mascotas</title>
+<meta name="description" content="Nueva colección para personas con perros y gatos: nuevos formatos y colores para armar a tu mejor amigo pieza por pieza.">
+
+<!-- Consentimiento: la analítica queda desactivada hasta que la persona acepte -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied', ad_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied'
+  });
+  try {
+    if (localStorage.getItem('consentimiento-analitica') === 'si') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) {}
+</script>
+<!-- La etiqueta de Google Analytics debe quedar DEBAJO de este bloque de consentimiento -->
+
+<style>
+  :root{
+    --rojo:#D01012; --rojo-osc:#A50D0F; --amarillo:#FFCF00; --amarillo-claro:#FFF4C2;
+    --tinta:#1B1B1B; --gris:#5A5A5A; --fondo:#FFFDF6; --blanco:#FFFFFF;
+    --radio:14px; --sombra:0 6px 0 rgba(0,0,0,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Segoe UI",system-ui,sans-serif;color:var(--tinta);background:var(--fondo);line-height:1.55;font-size:17px}
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  .contenedor{width:min(1120px,100% - 32px);margin-inline:auto}
+
+  /* Botones */
+  .boton{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:inherit;font-weight:900;font-size:1.1rem;text-decoration:none;padding:16px 30px;border-radius:12px;border:3px solid var(--tinta);transition:transform .12s, box-shadow .12s;cursor:pointer}
+  .boton-principal{background:var(--rojo);color:var(--blanco);box-shadow:var(--sombra)}
+  .boton-principal:hover{background:var(--rojo-osc);transform:translateY(-2px)}
+  .boton-principal:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+  .boton-secundario{background:transparent;color:var(--tinta);border-color:transparent;text-decoration:underline;text-underline-offset:4px;font-weight:800}
+  .boton:focus-visible{outline:4px solid var(--amarillo);outline-offset:3px}
+  .nota-cta{font-size:.9rem;color:var(--gris);margin-top:.6rem}
+
+  /* Header */
+  .cabecera{background:var(--amarillo);border-bottom:4px solid var(--tinta)}
+  .barra{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .marca{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem;text-decoration:none}
+  .ladrillo-mini{width:34px;height:22px;background:var(--rojo);border:2px solid var(--tinta);border-radius:4px;position:relative}
+  .ladrillo-mini::before,.ladrillo-mini::after{content:"";position:absolute;top:-7px;width:10px;height:6px;background:var(--rojo);border:2px solid var(--tinta);border-bottom:none;border-radius:3px 3px 0 0}
+  .ladrillo-mini::before{left:4px}.ladrillo-mini::after{right:4px}
+  nav ul{display:flex;gap:22px;list-style:none;font-weight:800}
+  nav a{text-decoration:none}
+  nav a:hover{text-decoration:underline}
+
+  /* Hero */
+  #hero{padding:56px 0 64px;background:linear-gradient(180deg,var(--amarillo) 0 30%,var(--fondo) 30%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;background:var(--blanco);border:4px solid var(--tinta);border-radius:22px;padding:44px;box-shadow:0 10px 0 rgba(0,0,0,.15)}
+  .antetitulo{display:inline-block;background:var(--rojo);color:var(--blanco);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;padding:6px 12px;border-radius:8px;margin-bottom:16px}
+  h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;font-weight:900;margin-bottom:16px}
+  h1 .resalte{background:linear-gradient(transparent 60%,var(--amarillo) 60%)}
+  .bajada{font-size:1.2rem;color:var(--gris);margin-bottom:22px;max-width:34ch}
+  .beneficios-rapidos{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .beneficios-rapidos li{background:var(--amarillo-claro);border:2px solid var(--tinta);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.95rem}
+  .acciones{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  .ilustracion{background:#FDEBD2;border-radius:18px;border:3px solid var(--tinta);padding:20px}
+
+  /* Secciones generales */
+  section{padding:72px 0}
+  h2{font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.1;font-weight:900;margin-bottom:12px}
+  .intro{color:var(--gris);font-size:1.1rem;max-width:60ch;margin-bottom:36px}
+
+  /* Cómo funciona */
+  .pasos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:paso}
+  .paso{background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);padding:26px;position:relative;box-shadow:var(--sombra)}
+  .paso::before{counter-increment:paso;content:counter(paso);position:absolute;top:-20px;left:22px;width:42px;height:42px;display:grid;place-items:center;background:var(--amarillo);border:3px solid var(--tinta);border-radius:10px;font-weight:900;font-size:1.2rem}
+  .paso h3{font-size:1.25rem;margin:10px 0 6px}
+  .paso p{color:var(--gris)}
+  .centrado{text-align:center;margin-top:40px}
+
+  /* Personaliza */
+  #personaliza{background:var(--blanco);border-block:4px solid var(--tinta)}
+  .opciones{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .opcion{border:3px solid var(--tinta);border-radius:var(--radio);padding:22px;background:var(--fondo)}
+  .opcion h3{font-size:1.15rem;margin-bottom:8px}
+  .muestras{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .muestra{width:30px;height:30px;border-radius:6px;border:2px solid var(--tinta)}
+
+  /* Preguntas */
+  .faq{display:grid;gap:14px;max-width:820px}
+  details{background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);padding:18px 22px}
+  summary{font-weight:900;font-size:1.1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;color:var(--gris)}
+
+  /* Cierre */
+  #cierre{background:var(--rojo);color:var(--blanco);text-align:center}
+  #cierre h2{color:var(--blanco)}
+  #cierre p{font-size:1.15rem;max-width:52ch;margin:0 auto 28px}
+  #cierre .boton-principal{background:var(--amarillo);color:var(--tinta)}
+  #cierre .boton-principal:hover{background:#FFE05C}
+  #cierre .nota-cta{color:var(--blanco);font-size:.9rem;margin-top:.8rem}
+
+  /* Pie del sitio */
+  .pie-sitio{background:var(--tinta);color:#D9D9D9;padding:28px 0 110px;font-size:.9rem}
+  .pie-sitio p+p{margin-top:6px}
+
+  /* CTA fijo en móvil */
+  .cta-fijo{position:fixed;left:0;right:0;bottom:0;background:var(--blanco);border-top:3px solid var(--tinta);padding:10px 16px;display:none;z-index:50;transform:translateY(110%);transition:transform .25s}
+  .cta-fijo.visible{transform:translateY(0)}
+  .cta-fijo .boton{width:100%;padding:14px}
+
+  /* Aviso de cookies */
+  .aviso-cookies{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin-inline:auto;background:var(--blanco);border:3px solid var(--tinta);border-radius:var(--radio);padding:18px;box-shadow:0 8px 0 rgba(0,0,0,.2);z-index:60}
+  .aviso-cookies[hidden]{display:none}
+  .aviso-cookies p{font-size:.95rem;margin-bottom:12px}
+  .aviso-botones{display:flex;gap:10px;flex-wrap:wrap}
+  .aviso-botones .boton{padding:10px 18px;font-size:1rem;flex:1;min-height:48px}
+  .boton-claro{background:var(--blanco);color:var(--tinta)}
+
+  /* Responsive */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;padding:26px}
+    .ilustracion{order:-1}
+    .pasos,.opciones{grid-template-columns:1fr;gap:30px}
+    nav{display:none}
+    section{padding:56px 0}
+    .cta-fijo{display:block}
+    .acciones .boton-principal{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="contenedor barra">
+    <a class="marca" href="#hero"><span class="ladrillo-mini" aria-hidden="true"></span>LEGO · Mascotas</a>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#personaliza">Personaliza</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 1. HERO: propuesta de valor + CTA principal -->
+  <section id="hero">
+    <div class="contenedor">
+      <div class="hero-grid">
+        <div>
+          <span class="antetitulo">Nueva colección</span>
+          <h1>Arma a tu <span class="resalte">mejor amigo</span>, pieza por pieza</h1>
+          <p class="bajada">Elige si es perro o gato, su formato y sus colores, y arma un set que se parezca a quien te espera en casa.</p>
+          <ul class="beneficios-rapidos" role="list" aria-label="Beneficios">
+            <li>Perros y gatos</li>
+            <li>Nuevos formatos</li>
+            <li>Nuevos colores</li>
+          </ul>
+          <div class="acciones">
+            <a id="cta-principal" class="boton boton-principal" href="https://www.lego.com/?utm_source=landing_mascotas&amp;utm_medium=cta&amp;utm_content=hero" target="_blank" rel="noopener" data-ubicacion="hero">Ver colección</a>
+            <a class="boton boton-secundario" href="#como-funciona">¿Cómo funciona?</a>
+          </div>
+          <p class="nota-cta">Se abre la colección online en una pestaña nueva.</p>
+        </div>
+
+        <div class="ilustracion" aria-hidden="true">
+          <!-- Ilustración propia y decorativa: perro y gato hechos de bloques -->
+          <svg viewBox="0 0 420 300" focusable="false">
+            <rect x="0" y="262" width="420" height="38" fill="#E9C99A"/>
+            <!-- Perro -->
+            <g stroke="#1B1B1B" stroke-width="4" stroke-linejoin="round">
+              <rect x="215" y="150" width="140" height="112" rx="8" fill="#C8873A"/>
+              <rect x="232" y="138" width="22" height="14" rx="3" fill="#C8873A"/>
+              <rect x="316" y="138" width="22" height="14" rx="3" fill="#C8873A"/>
+              <rect x="235" y="232" width="40" height="30" fill="#A86A26"/>
+              <rect x="295" y="232" width="40" height="30" fill="#A86A26"/>
+              <path d="M355 200 q40 -10 38 -60" fill="none" stroke-width="14" stroke-linecap="round"/>
+              <path d="M355 200 q40 -10 38 -60" fill="none" stroke="#C8873A" stroke-width="7" stroke-linecap="round"/>
+              <rect x="225" y="52" width="104" height="96" rx="10" fill="#C8873A"/>
+              <rect x="246" y="40" width="22" height="14" rx="3" fill="#C8873A"/>
+              <rect x="286" y="40" width="22" height="14" rx="3" fill="#C8873A"/>
+              <rect x="200" y="58" width="30" height="72" rx="8" fill="#7A4A18"/>
+              <rect x="324" y="58" width="30" height="72" rx="8" fill="#7A4A18"/>
+              <rect x="250" y="104" width="54" height="34" rx="8" fill="#F2D7A9"/>
+              <rect x="262" y="148" width="50" height="12" fill="#D01012"/>
+            </g>
+            <circle cx="257" cy="88" r="6" fill="#1B1B1B"/>
+            <circle cx="297" cy="88" r="6" fill="#1B1B1B"/>
+            <rect x="268" y="108" width="18" height="12" rx="5" fill="#1B1B1B"/>
+            <circle cx="287" cy="166" r="7" fill="#FFCF00" stroke="#1B1B1B" stroke-width="3"/>
+            <!-- Gato -->
+            <g stroke="#1B1B1B" stroke-width="4" stroke-linejoin="round">
+              <path d="M150 232 q50 0 40 -60" fill="none" stroke-width="13" stroke-linecap="round"/>
+              <path d="M150 232 q50 0 40 -60" fill="none" stroke="#8C8C8C" stroke-width="6" stroke-linecap="round"/>
+              <rect x="60" y="176" width="96" height="86" rx="8" fill="#8C8C8C"/>
+              <rect x="70" y="238" width="30" height="24" fill="#6E6E6E"/>
+              <rect x="116" y="238" width="30" height="24" fill="#6E6E6E"/>
+              <path d="M66 112 l8 -30 l22 22 z" fill="#8C8C8C"/>
+              <path d="M150 112 l-8 -30 l-22 22 z" fill="#8C8C8C"/>
+              <rect x="62" y="100" width="92" height="78" rx="10" fill="#8C8C8C"/>
+              <rect x="74" y="88" width="18" height="12" rx="3" fill="#8C8C8C"/>
+              <rect x="124" y="88" width="18" height="12" rx="3" fill="#8C8C8C"/>
+              <rect x="88" y="140" width="40" height="26" rx="7" fill="#E6E6E6"/>
+            </g>
+            <ellipse cx="90" cy="130" rx="5" ry="7" fill="#1B1B1B"/>
+            <ellipse cx="126" cy="130" rx="5" ry="7" fill="#1B1B1B"/>
+            <path d="M102 146 h12 l-6 7 z" fill="#E87A9B" stroke="#1B1B1B" stroke-width="2"/>
+            <!-- Ladrillos sueltos -->
+            <g stroke="#1B1B1B" stroke-width="3">
+              <rect x="20" y="40" width="44" height="22" rx="3" fill="#FFCF00"/>
+              <rect x="26" y="32" width="12" height="9" rx="2" fill="#FFCF00"/>
+              <rect x="46" y="32" width="12" height="9" rx="2" fill="#FFCF00"/>
+              <rect x="370" y="30" width="34" height="20" rx="3" fill="#D01012"/>
+              <rect x="378" y="22" width="12" height="9" rx="2" fill="#D01012"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CÓMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="contenedor">
+      <h2>Así armas el tuyo</h2>
+      <p class="intro">Tres pasos para pasar de tu mascota real a su versión en bloques.</p>
+      <ol class="pasos" role="list">
+        <li class="paso">
+          <h3>Elige perro o gato</h3>
+          <p>Parte por la especie de tu mejor amigo.</p>
+        </li>
+        <li class="paso">
+          <h3>Escoge formato y colores</h3>
+          <p>Busca el formato y los colores que más se parecen a tu mascota.</p>
+        </li>
+        <li class="paso">
+          <h3>Ármalo pieza por pieza</h3>
+          <p>Disfruta construyéndolo solo o en compañía.</p>
+        </li>
+      </ol>
+      <div class="centrado">
+        <a class="cta-principal boton boton-principal" href="https://www.lego.com/?utm_source=landing_mascotas&amp;utm_medium=cta&amp;utm_content=como_funciona" target="_blank" rel="noopener" data-ubicacion="como-funciona">Ver colección</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PERSONALIZA: responde la objeción "¿se parecerá al mío?" -->
+  <section id="personaliza">
+    <div class="contenedor">
+      <h2>Hecho para parecerse al tuyo</h2>
+      <p class="intro">La nueva colección trae nuevos formatos y colores para que tu set se acerque lo más posible a tu mejor amigo.</p>
+
+      <div class="opciones">
+        <article class="opcion">
+          <h3>Perros y gatos</h3>
+          <p>La colección está pensada para quienes viven con perros y con gatos.</p>
+        </article>
+        <article class="opcion">
+          <h3>Nuevos formatos</h3>
+          <p>Más formatos para elegir el que mejor representa a tu mascota.</p>
+        </article>
+        <article class="opcion">
+          <h3>Nuevos colores</h3>
+          <p>Más colores para acercarte a su pelaje.</p>
+          <div class="muestras" role="list" aria-label="Algunos colores ilustrativos">
+            <span class="muestra" role="listitem" aria-label="Negro" style="background:#1B1B1B"></span>
+            <span class="muestra" role="listitem" aria-label="Blanco" style="background:#FFFFFF"></span>
+            <span class="muestra" role="listitem" aria-label="Café" style="background:#C8873A"></span>
+            <span class="muestra" role="listitem" aria-label="Gris" style="background:#8C8C8C"></span>
+            <span class="muestra" role="listitem" aria-label="Dorado" style="background:#E8B04A"></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PREGUNTAS FRECUENTES -->
+  <section id="preguntas">
+    <div class="contenedor">
+      <h2>Preguntas frecuentes</h2>
+      <p class="intro">Lo que conviene saber antes de armar a tu mejor amigo.</p>
+      <div class="faq">
+        <details>
+          <summary>¿Cuánto cuesta?</summary>
+          <p>El precio de cada set aparece en la colección online.</p>
+        </details>
+        <details>
+          <summary>¿Hay opciones para perros y para gatos?</summary>
+          <p>Sí. La nueva colección incluye ambos.</p>
+        </details>
+        <details>
+          <summary>¿Qué tan difícil es armarlo?</summary>
+          <p>En la ficha de cada set puedes revisar su número de piezas y la edad recomendada.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tarda en llegar?</summary>
+          <p>El plazo de despacho se informa en la colección online al elegir tu set.</p>
+        </details>
+        <details>
+          <summary>¿Sirve como regalo?</summary>
+          <p>Sí. Es un regalo pensado para cualquier persona que quiera tener a su mascota también en su escritorio o repisa.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CIERRE: CTA final -->
+  <section id="cierre">
+    <div class="contenedor">
+      <h2>Tu mejor amigo, ahora en bloques</h2>
+      <p>Elige su formato y sus colores, y empieza a armarlo hoy.</p>
+      <a class="cta-principal boton boton-principal" href="https://www.lego.com/?utm_source=landing_mascotas&amp;utm_medium=cta&amp;utm_content=cierre" target="_blank" rel="noopener" data-ubicacion="cierre">Ver colección</a>
+      <p class="nota-cta">Se abre la colección online en una pestaña nueva.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-sitio">
+  <div class="contenedor">
+    <p>Proyecto académico de diseño. No es un sitio oficial ni está afiliado a LEGO.</p>
+    <p>Esta página usa cookies de analítica solo si las aceptas.</p>
+  </div>
+</footer>
+
+<!-- CTA fijo en móvil -->
+<div class="cta-fijo" id="barra-cta" aria-hidden="true">
+  <a class="cta-principal boton boton-principal" href="https://www.lego.com/?utm_source=landing_mascotas&amp;utm_medium=cta&amp;utm_content=barra_movil" target="_blank" rel="noopener" data-ubicacion="barra-movil" tabindex="-1">Ver colección</a>
+</div>
+
+<!-- Aviso de cookies (solo botones, no recoge datos personales) -->
+<div class="aviso-cookies" id="aviso-cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies de analítica para saber cómo se usa esta página y mejorarla. ¿Las aceptas?</p>
+  <div class="aviso-botones">
+    <button type="button" class="boton boton-principal" id="aceptar-cookies">Aceptar</button>
+    <button type="button" class="boton boton-claro" id="rechazar-cookies">Rechazar</button>
+  </div>
+</div>
+
+<script>
+  // Lee y guarda la decisión de cookies sin romper la página si el navegador lo bloquea
+  function leerDecision(){ try { return localStorage.getItem('consentimiento-analitica'); } catch(e){ return null; } }
+  function guardarDecision(v){ try { localStorage.setItem('consentimiento-analitica', v); } catch(e){} }
+
+  var aviso = document.getElementById('aviso-cookies');
+  var avisoAbierto = !leerDecision();
+  aviso.hidden = !avisoAbierto;
+
+  function cerrarAviso(acepta){
+    guardarDecision(acepta ? 'si' : 'no');
+    if (acepta) gtag('consent', 'update', { analytics_storage: 'granted' });
+    aviso.hidden = true;
+    avisoAbierto = false;
+    if (window.actualizarBarraCta) window.actualizarBarraCta();
+  }
+  document.getElementById('aceptar-cookies').addEventListener('click', function(){ cerrarAviso(true); });
+  document.getElementById('rechazar-cookies').addEventListener('click', function(){ cerrarAviso(false); });
+
+  // Barra fija del CTA en móvil: aparece cuando el CTA del hero ya no se ve,
+  // y se oculta en el cierre o mientras el aviso de cookies está abierto
+  (function(){
+    var barra = document.getElementById('barra-cta');
+    var ctaHero = document.getElementById('cta-principal');
+    var cierre = document.getElementById('cierre');
+    if(!('IntersectionObserver' in window) || !barra || !ctaHero) return;
+    var heroVisible = true, cierreVisible = false;
+    window.actualizarBarraCta = function(){
+      var mostrar = !heroVisible && !cierreVisible && !avisoAbierto;
+      barra.classList.toggle('visible', mostrar);
+      barra.setAttribute('aria-hidden', mostrar ? 'false' : 'true');
+      barra.querySelector('a').tabIndex = mostrar ? 0 : -1;
+    };
+    new IntersectionObserver(function(e){ heroVisible = e[0].isIntersecting; window.actualizarBarraCta(); }).observe(ctaHero);
+    if(cierre) new IntersectionObserver(function(e){ cierreVisible = e[0].isIntersecting; window.actualizarBarraCta(); }).observe(cierre);
+  })();
+
+  // Registra en qué parte de la página se hace clic en el CTA (no envía datos personales)
+  document.querySelectorAll('#cta-principal, .cta-principal').forEach(function(boton){
+    boton.addEventListener('click', function(){
+      window.dataLayer.push({ event: 'clic_cta_principal', ubicacion: boton.dataset.ubicacion || 'desconocida' });
+    });
+  });
+</script>
+</body>
+</html>
