@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- GOOGLE ANALYTICS AQUÍ -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arma a tu mejor amigo | Nueva colección de mascotas</title>
@@ -21,7 +21,15 @@
     }
   } catch (e) {}
 </script>
-<!-- La etiqueta de Google Analytics debe quedar DEBAJO de este bloque de consentimiento -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BWLMR2JP83"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BWLMR2JP83');
+</script>
 
 <style>
   :root{
@@ -385,8 +393,7 @@
   // Registra en qué parte de la página se hace clic en el CTA (no envía datos personales)
   document.querySelectorAll('#cta-principal, .cta-principal').forEach(function(boton){
     boton.addEventListener('click', function(){
-      window.dataLayer.push({ event: 'clic_cta_principal', ubicacion: boton.dataset.ubicacion || 'desconocida' });
-    });
+      gtag('event', 'clic_cta_principal', { ubicacion: boton.dataset.ubicacion || 'sin_seccion' });
   });
 </script>
 </body>
